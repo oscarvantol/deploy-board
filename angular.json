@@ -28,7 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/test-data"
             ],
             "styles": [
               "src/styles.scss"
@@ -75,7 +76,7 @@
               "browserTarget": "deploy-board:build:production"
             },
             "development": {
-              "browserTarget": "deploy-board:build:development"
+              "browserTarget": "deploy-board:build:development"              
             }
           },
           "defaultConfiguration": "development"

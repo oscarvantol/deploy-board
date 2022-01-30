@@ -4,6 +4,7 @@ import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { DeployState } from './deploy.state';
 import { DeployStateActions } from './deploy.state-actions';
+import { result } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ export class AppComponent {
 
   constructor(private store: Store) {
     this.taskOrchestrationOwners$ = this.store.select(DeployState.taskOrchestrationOwners());
-    this.store.dispatch(DeployStateActions.Initialize);
+        this.store.dispatch(DeployStateActions.Initialize);
   }
 
   public getEnvironmentInstances(taskOrchestrationOwnerId: number) {
@@ -26,5 +27,8 @@ export class AppComponent {
   public getLastSuccessfullDeployment(taskOrchestrationOwnerId: number, environmentInstanceId: number) {
     return this.store.select(DeployState.lastSuccessfulEnvironmentDeploymentExecutionRecord(taskOrchestrationOwnerId, environmentInstanceId));
   }
-
+  public getDeployments(taskOrchestrationOwnerId: number, environmentInstanceId: number) {
+    return this.store.select(DeployState.environmentDeploymentExecutionRecords(taskOrchestrationOwnerId, environmentInstanceId));
+  }
+  
 }

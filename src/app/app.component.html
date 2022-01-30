@@ -6,36 +6,14 @@
   </div>
 
   <div class="flex-grid">
-    <div class="col">{{taskOrchestrationOwner.name}}</div>
+    <div class="col owner">{{taskOrchestrationOwner.name}}</div>
     <div class="col" *ngFor="let envInstance of getEnvironmentInstances(taskOrchestrationOwner.id) | async">
-      <span
-        *ngIf="getLastSuccessfullDeployment(taskOrchestrationOwner.id, envInstance.id) | async as _view ">{{_view.owner.name}}
+      <span class="deployment">
+        <a *ngIf="getLastSuccessfullDeployment(taskOrchestrationOwner.id, envInstance.id) | async as _view "
+          [href]="_view.owner._links.web.href" target="_top" [title]="_view.result">
+          {{_view.owner.name}}
+        </a>
       </span>
     </div>
   </div>
 </div>
-
-
-<!-- 
-<div class="flex-grid">
-  <div class="col">xy-api</div>
-  <div class="col">2022.01.10.3</div>
-  <div class="col">2022.01.09.1</div>
-  <div class="col">2022.01.01.2</div>
-</div>
-
-
-<div class="flex-grid header">
-  <div class="col"></div>
-  <div class="col">Dev</div>
-  <div class="col">Test</div>
-  <div class="col">Acc</div>
-  <div class="col">Prod</div>
-</div>
-<div class="flex-grid">
-  <div class="col">xx-api</div>
-  <div class="col">2022.01.10.3</div>
-  <div class="col">2022.01.09.1</div>
-  <div class="col">2022.01.01.4</div>
-  <div class="col">2022.01.01.2</div>
-</div> -->
