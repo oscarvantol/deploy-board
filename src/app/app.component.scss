@@ -1,8 +1,8 @@
-.flex-grid .col {
-    flex: 1;
-    padding: 10px;
-    margin-right: 2px;
-    background-color: #99999910;
+@font-face {
+    font-style: normal;
+    font-weight: 400;
+    font-family: "AzureDevOpsMDL2Assets";
+    src: url("../assets/AzDevMDL2.woff") format("woff");
 }
 
 body {
@@ -11,29 +11,74 @@ body {
 
 .flex-grid {
     display: flex;
-    margin: 2 2 10px 2;
 }
 
-.owner {
-    font-weight: bolder;
+.definition {
+    min-width: 300px;
+    padding: 10px;
+}
+
+.environment-instance {
+    padding: 5px;
+    font-size: smaller;
+}
+
+.environment {
+    text-align: center;
+    a {
+        color: rgba(0, 0, 0, 0.9);
+        color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
+    }
+    padding-right: 10px;
 }
 
 .deployment {
-    border: solid 1px #000000;
+    background-color: #44444490;
+    min-width: 250px;
+    text-align: center;
     border-radius: 5px;
-    padding: 6px 10px;
-    background-color: green;
-    
-    a {
-        color: #FFFFFF;
-    }
+    padding: 5px;
+    background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
 }
 
-.header {
-    font-weight: bolder;
-    margin-top: 6px;
+.in-progress {
+    background-color: var(--communication-background, rgba(0, 120, 212, 1));
+}
+
+.path-group {
+    background-color: #fff;
+    background-color: var(--background-color, #fff);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 3.2px 7.2px 0 var(--callout-shadow-color, rgba(0, 0, 0, 0.132)),
+        0 0.6px 1.8px 0 var(--callout-shadow-secondary-color, rgba(0, 0, 0, 0.108));
+    margin-bottom: 20px;
+    padding: 6px;
+    font-weight: 600;
+}
+
+.settings-toggle {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
+
+.ms-Icons {
+    font-family: "AzureDevOpsMDL2Assets";
+    -webkit-font-smoothing: antialiased;
+    margin-right: 3px;
+    top: 2px;
+    position: relative;
+}
+
+.ms-Icon--Settings:before {
+    content: "\e713 ";
 }
 
 * {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: "Segoe UI", "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Ubuntu, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
 }

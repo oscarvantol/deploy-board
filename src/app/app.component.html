@@ -1,19 +1,23 @@
-<div *ngFor="let taskOrchestrationOwner of taskOrchestrationOwners$ | async">
-  <div class="flex-grid header">
-    <div class="col"></div>
-    <div class="col" *ngFor="let envInstance of getEnvironmentInstances(taskOrchestrationOwner.id) | async">
-      {{envInstance.name}}</div>
-  </div>
-
-  <div class="flex-grid">
-    <div class="col owner">{{taskOrchestrationOwner.name}}</div>
-    <div class="col" *ngFor="let envInstance of getEnvironmentInstances(taskOrchestrationOwner.id) | async">
-      <span class="deployment">
-        <a *ngIf="getLastSuccessfullDeployment(taskOrchestrationOwner.id, envInstance.id) | async as _view "
-          [href]="_view.owner._links.web.href" target="_top" [title]="_view.result">
-          {{_view.owner.name}}
-        </a>
-      </span>
+<h1>Deploy Board</h1>
+<div class="settings-toggle"><span class="ms-Icons ms-Icon--Settings" (click)="editMode = !editMode"></span></div>
+<div *ngFor="let path of getBuildDefinitionPaths() | async" class="path-group">
+  <div>{{ path.replace('\\',' ') }}</div>
+  <div *ngFor="let buildDefinition of getBuildsDefinitions(path) | async">
+    <div class="flex-grid">
+      <h3 class="definition">{{buildDefinition.name}}</h3>
+      <div class="environment"
+        *ngFor="let envInstance of getEnvironmentInstances(buildDefinition.id) | async let isLast = last">
+        <div class="environment-instance">{{envInstance.name}}
+          <button (click)="swapOrder(buildDefinition.id,  envInstance.id)" *ngIf="!isLast && editMode">swap ==></button>
+        </div>
+        <div class="deployment"
+          *ngIf="getLastSuccessfullDeployment(buildDefinition.id, envInstance.id) | async as _view "
+          [ngClass]="{ 'in-progress': getBuildInProgress(_view.owner.id) | async}">
+          <a [href]="_view.owner._links.web.href" target="_top" [title]="_view.result">
+            {{_view.owner.name}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </div>

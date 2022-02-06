@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "deploy-board",
     "publisher": "ovantol",
-    "version": "0.0.21cd",
+    "version": "0.0.26",
     "name": "deploy-board",
     "description": "Deploy overview Azure DevOps",
     "demands": ["api-version/5.0"],
