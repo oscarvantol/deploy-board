@@ -4,19 +4,19 @@
   <div>{{ path.replace('\\',' ') }}</div>
   <div *ngFor="let buildDefinition of getBuildsDefinitions(path) | async">
     <div class="flex-grid">
-      <h3 class="definition">{{buildDefinition.name}}</h3>
+      <h3 class="definition" [title]="buildDefinition | json">{{buildDefinition.name}}</h3>
       <div class="environment"
         *ngFor="let envInstance of getEnvironmentInstances(buildDefinition.id) | async let isLast = last">
-        <div class="environment-instance">{{envInstance.name}}
-          <button (click)="swapOrder(buildDefinition.id,  envInstance.id)" *ngIf="!isLast && editMode">swap ==></button>
-        </div>
+        <div class="environment-instance">{{envInstance.name}} </div>
         <div class="deployment"
           *ngIf="getLastSuccessfullDeployment(buildDefinition.id, envInstance.id) | async as _view "
           [ngClass]="{ 'in-progress': getBuildInProgress(_view.owner.id) | async}">
-          <a [href]="_view.owner._links.web.href" target="_top" [title]="_view.result">
+          <a [href]="_view.owner._links.web.href" target="_top" [title]="_view | json">
             {{_view.owner.name}}
           </a>
         </div>
+        <div class="ms-Icons ms-Icon--Swap swap" (click)="swapOrder(buildDefinition.id,  envInstance.id)"
+        *ngIf="!isLast && editMode"></div>
       </div>
     </div>
   </div>
