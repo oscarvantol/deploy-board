@@ -5,6 +5,12 @@ export namespace DeployStateActions {
         static readonly type = `[DeployStateActions] Initialize`;
     }
 
+    export class LoadTimeline {
+        static readonly type = `[DeployStateActions] LoadTimeline`;
+        constructor(public buildId: number) {
+        }
+    }
+
     export class SwapEnvironmentOrder {
         static readonly type = `[DeployStateActions] SwapEnvironmentOrder`;
         constructor(public environment1: EnvironmentInstance, public environment2: EnvironmentInstance) {

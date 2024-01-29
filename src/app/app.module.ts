@@ -6,10 +6,13 @@ import { NgxsModule } from '@ngxs/store';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DeployState } from './deploy.state';
+import { TimelineComponent } from './timeline.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TimelineComponent
+
   ],
   imports: [
     BrowserModule,

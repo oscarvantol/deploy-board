@@ -1,0 +1,40 @@
+
+
+.stages {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;;
+}
+
+.stage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;;
+}
+
+.succeeded {
+  background-color: green;
+  color: white;
+}
+
+.skipped {
+    background-color: grey;
+    color: white;
+  }
+
+.pending {
+  background-color:blue;
+  color: white;
+}

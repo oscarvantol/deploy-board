@@ -1,0 +1,5 @@
+<div class="stages">
+    <span *ngFor="let stage of timelineRecords">
+       <span [class]="stage.result || stage.state" class="stage"> {{stage.name}} {{stage.result}}</span>
+    </span>
+</div>
