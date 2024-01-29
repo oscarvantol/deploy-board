@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { DeployState } from './deploy.state';
 import { DeployStateActions } from './deploy.state-actions';
-import { Timeline, TimelineRecord, TimelineRecordState } from 'azure-devops-extension-api/Build';
+import { TaskResult, Timeline, TimelineRecord, TimelineRecordState } from 'azure-devops-extension-api/Build';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -13,9 +13,40 @@ import { Observable } from 'rxjs';
 export class TimelineComponent {
     @Input() buildId: number = 0;
     @Input() timelineRecords: TimelineRecord[] | null = [];
+    TimelineRecordState = TimelineRecordState;
 
 
     constructor(private store: Store) {
 
     }
+
+    getClass(record: TimelineRecord) {
+
+        switch (record.state) {
+            case TimelineRecordState.Pending:
+                return "stage-pending";
+            case TimelineRecordState.InProgress:
+                return "stage-in-progress";
+            case TimelineRecordState.Completed:
+                break;
+        }
+
+        switch (record.result) {
+            case TaskResult.Succeeded:
+                return "stage-succeeded";
+            case TaskResult.SucceededWithIssues:
+                return "stage-succeeded-with-issues";
+            case TaskResult.Failed:
+                return "stage-failed";
+            case TaskResult.Canceled:
+                return "stage-canceled";
+            case TaskResult.Skipped:
+                return "stage-skipped";
+            case TaskResult.Abandoned:
+                return "stage-abandoned";
+        }
+
+        return "stage-unknown";
+    }
+
 }

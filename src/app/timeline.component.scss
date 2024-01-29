@@ -1,40 +1,58 @@
-
-
 .stages {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;;
+    flex-direction: row;
+
+
+
 }
 
 .stage {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;;
-}
-
-.succeeded {
-  background-color: green;
-  color: white;
-}
-
-.skipped {
-    background-color: grey;
     color: white;
-  }
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    border: solid 1px rgb(91, 91, 91);
+    width: 200px;
+    text-overflow: ellipsis;
+    height: 20px;
+}
 
-.pending {
-  background-color:blue;
-  color: white;
+.stage-pending {
+
+    background-color: rgb(65, 65, 240);
+}
+
+.stage-in-progress {
+
+    background-color: rgb(82, 126, 227);
+}
+
+.stage-succeeded {
+    background-color: rgb(25, 81, 25);
+}
+
+.stage-succeeded-with-issues {
+    background-color: rgb(156, 78, 9);
+}
+
+.stage-failed {
+    background-color: rgb(129, 0, 0);
+}
+
+.stage-canceled {
+    background-color: rgb(83, 83, 83);
+}
+
+.stage-skipped {
+    background-color: rgb(87, 87, 87);
+}
+
+.stage-abandoned {
+    background-color: black;
+}
+
+.stage-unknown {
+
+    background-color: rgb(83, 83, 83);
 }

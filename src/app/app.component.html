@@ -1,12 +1,14 @@
 <h1>Deploy Board</h1>
 
-<div>
-  create a loop per build definition
-</div>
 
 <div *ngFor="let build of getBuildInProgress() | async">
-  {{build.id}} | {{build.definition.name}} ({{build.buildNumber}}) > {{build.status}}
+  <span class="build-title">{{build.definition.name}} (<a
+      [href]="build._links.web.href">{{build.buildNumber}}</a>)</span>
+
+  <span class="build-details">
+    {{build.requestedFor.displayName}} - {{build.triggerInfo['ci.sourceBranch']}} - {{build.triggerInfo['ci.message']}}
+  </span>
+
 
   <build-timeline [buildId]="build.id" [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
-  <hr />
 </div>

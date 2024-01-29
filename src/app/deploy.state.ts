@@ -49,7 +49,14 @@ export class DeployState {
 
         const buildsInProgress = await this.vssService.getBuildsInProgress();
         ctx.patchState({
-            buildsInProgress: buildsInProgress.sort((a, b) => a.definition.id - b.definition.id)
+            buildsInProgress: buildsInProgress.sort((a, b) => {
+                const definitionOrder = a.definition.id - b.definition.id;
+                if (definitionOrder != 0)
+                    return definitionOrder;
+                return a.id - b.id;
+            }
+
+            )
         });
 
         await Promise.all(buildsInProgress.map(e => {

@@ -15,59 +15,17 @@ h1 {
     margin: 12px 0 10px;
 }
 
-.flex-grid {
-    display: flex;
-}
 
-.definition {
-    min-width: 300px;
-    padding: 10px;
-}
-
-.environment-instance {
-    padding: 5px;
-    font-size: smaller;
-}
-
-.environment {
-    text-align: center;
-    a {
-        color: rgba(0, 0, 0, 0.9);
-        color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
-    }
-    padding-right: 10px;
-}
-
-.deployment {
+.build-title {
     background-color: #44444490;
-    min-width: 250px;
-    text-align: center;
-    border-radius: 5px;
-    padding: 5px;
     background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
 }
 
-.in-progress {
-    background-color: var(--communication-background, rgba(0, 120, 212, 1));
-}
-
-.path-group {
-    background-color: #fff;
-    background-color: var(--background-color, #fff);
-    border: 0;
-    border-radius: 4px;
-    box-shadow: 0 3.2px 7.2px 0 var(--callout-shadow-color, rgba(0, 0, 0, 0.132)),
-        0 0.6px 1.8px 0 var(--callout-shadow-secondary-color, rgba(0, 0, 0, 0.108));
-    margin-bottom: 20px;
-    padding: 6px;
-    font-weight: 600;
-}
-
-.settings-toggle {
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
+.build-details {
+    display: block;
+    background-color: #44444490;
+    font-size: small;;
+    background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
 }
 
 .ms-Icons {
