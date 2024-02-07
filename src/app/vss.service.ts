@@ -111,7 +111,7 @@ export class VssService {
         return this.httpClient.get(`./test-data/buildsinprogress.json`).toPromise() as Promise<Build[]>
     }
     private loadTestTimeline(buildId: number) {
-        return this.httpClient.get(`./test-data/builds/timeline/${buildId}.json`).toPromise() as Promise<Timeline>
+        return this.httpClient.get(`./test-data/builds/timeline/${buildId}.timeline.json`).toPromise() as Promise<Timeline>
     }
 
 }

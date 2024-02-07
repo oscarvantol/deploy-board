@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "deploy-board",
     "publisher": "ovantol",
-    "version": "0.0.37",
+    "version": "0.0.41",
     "name": "deploy-board",
     "description": "Deploy overview Azure DevOps",
     "demands": ["api-version/5.0"],
@@ -42,9 +42,10 @@
                 "ms.vss-build-web.build-release-hub-group"
             ],
             "properties": {
-                "name": "deployBoard",
+                "name": "Deploy Board",
                 "icon": "images/deploy-board.png",
-                "uri": "app/index.html"
+                "uri": "app/index.html",
+                "order": 100
             }
         }
     ],

@@ -13,6 +13,7 @@ import { Observable } from 'rxjs';
 export class TimelineComponent {
     @Input() buildId: number = 0;
     @Input() timelineRecords: TimelineRecord[] | null = [];
+    @Input() href: string = "";
     TimelineRecordState = TimelineRecordState;
 
 
@@ -49,4 +50,7 @@ export class TimelineComponent {
         return "stage-unknown";
     }
 
+    getTooltip(record: TimelineRecord) {
+        return record.name + " (" + this.getClass(record) + ")";
+    }
 }

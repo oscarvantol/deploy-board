@@ -7,45 +7,46 @@
 }
 
 .stage {
+    font-size: xx-small;
     display: flex;
     color: white;
     margin: 5px;
-    padding: 5px;
-    border-radius: 5px;
-    border: solid 1px rgb(91, 91, 91);
-    width: 200px;
-    text-overflow: ellipsis;
-    height: 20px;
+    
+    border-radius: 7px;
+  
+    width: 14px;
+
+    height: 14px;
 }
 
 .stage-pending {
 
-    background-color: rgb(65, 65, 240);
+    background-color: rgba(0, 120, 212, 1);
 }
 
 .stage-in-progress {
 
-    background-color: rgb(82, 126, 227);
+    background-color: rgb(94, 172, 233);
 }
 
 .stage-succeeded {
-    background-color: rgb(25, 81, 25);
+    background-color: rgba(85, 163, 98, 1);
 }
 
 .stage-succeeded-with-issues {
-    background-color: rgb(156, 78, 9);
+    background-color: rgba(214, 127, 60, 1);
 }
 
 .stage-failed {
-    background-color: rgb(129, 0, 0);
+    background-color: rgba(205, 74, 69, 1);
 }
 
 .stage-canceled {
-    background-color: rgb(83, 83, 83);
+    background-color: rgba(102, 102, 102, 1);
 }
 
 .stage-skipped {
-    background-color: rgb(87, 87, 87);
+    background-color: rgb(165, 165, 165);
 }
 
 .stage-abandoned {
@@ -54,5 +55,5 @@
 
 .stage-unknown {
 
-    background-color: rgb(83, 83, 83);
+    background-color: rgba(102, 102, 102, 1);
 }

@@ -1,6 +1,6 @@
 <div class="stages">
     <span *ngFor="let stage of timelineRecords">
-        <span [class]="getClass(stage)" class="stage">{{stage.name}}</span>
+        <a [href]="href" target="_blank"><span [class]="getClass(stage)" class="stage" title="{{getTooltip(stage)}}"></span></a>
 
     </span>
 </div>

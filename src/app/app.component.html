@@ -1,14 +1,25 @@
 <h1>Deploy Board</h1>
 
+<div *ngFor="let build of getBuildInProgress() | async" class="build">
 
-<div *ngFor="let build of getBuildInProgress() | async">
-  <span class="build-title">{{build.definition.name}} (<a
-      [href]="build._links.web.href">{{build.buildNumber}}</a>)</span>
+  <div class="header">
+    <span class="ms-Icons"><span aria-hidden="true" class="ms-Icon--Pipeline"></span></span>
+    <span>{{build.definition.name}}</span>
+    <span>&nbsp;</span>
+    <a class="title" [href]="build._links.web.href" target="_top">{{build.buildNumber}}</a>
+  </div>
 
-  <span class="build-details">
-    {{build.requestedFor.displayName}} - {{build.triggerInfo['ci.sourceBranch']}} - {{build.triggerInfo['ci.message']}}
-  </span>
+  <div class="container">
 
+    <div class="item-details">
+      <div><a href="{{build.repository.url}}/commit/{{build.triggerInfo['ci.sourceSha']}}" target="_blank">{{build.triggerInfo['ci.message']}}</a></div>
+      <div>
+        <span>Created by {{build.requestedFor.displayName}} for {{build.triggerInfo['ci.sourceBranch']}}</span>
+      </div>
+    </div>
 
-  <build-timeline [buildId]="build.id" [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
+    <div class="item-progress">
+      <build-timeline [buildId]="build.id" [href]="build._links.web.href" [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
+    </div>
+  </div>
 </div>

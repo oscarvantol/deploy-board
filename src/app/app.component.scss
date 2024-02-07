@@ -2,31 +2,167 @@
     font-style: normal;
     font-weight: 400;
     font-family: "AzureDevOpsMDL2Assets";
-    src: url("../assets/AzDevMDL2.woff") format("woff");
+    src: url("../assets/AzDevMDL2.woff") format('woff');
 }
+
+
+a {
+    color: rgb(var(--palette-primary-shade-10, 0, 90, 158));
+}
+
 
 body {
     padding: 10px;
 }
 
+
 h1 {
     font-size: 21px;
     font-weight: 600;
     margin: 12px 0 10px;
+    font-family: "Segoe UI", "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Ubuntu, Arial,
+        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    color: rgba(0, 0, 0, 0.9);
+    color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
+}
+
+.build {
+    background-color: #fff;
+    background-color: var(--background-color, #fff);
+    border: 0;
+    border-radius: 4px;
+    box-shadow: 0 3.2px 7.2px 0 var(--callout-shadow-color, rgba(0, 0, 0, .132)), 0 0.6px 1.8px 0 var(--callout-shadow-secondary-color, rgba(0, 0, 0, .108));
+    font-family: "Segoe UI", "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Ubuntu, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    font-weight: normal;
+    margin-bottom: 16px;
+    padding: 0;
+
+    &.no-branches {
+        opacity: .5;
+
+        &:hover {
+            opacity: 1;
+        }
+    }
+
+    a {
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .header {
+        align-items: center;
+        display: flex;
+        font-weight: 600;
+        padding: 12px 16px;
+
+        .fav {
+            margin-left: auto;
+        }
+
+        a {
+            color: rgba(0, 0, 0, .9);
+            color: var(--text-primary-color, rgba(0, 0, 0, .9));
+        }
+    }
+
+    .footer {
+        align-items: right;
+        display: flex;
+        font-weight: 600;
+        padding: 12px 16px;
+
+        .btn {
+            margin-left: auto;
+        }
+
+    }
+
+    .badge {
+        border: solid 1px #ccc;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: normal;
+        margin-left: 8px;
+        padding: 2px 4px;
+    }
+
+    .warning {
+        border-color: #f05133;
+        color: rgba(205, 74, 69, 1);
+        font-weight: bolder;
+    }
+
+    .clickable {
+        cursor: pointer;
+    }
+
+    .container {
+        display: flex;
+        border-top: solid 1px #eee;
+        border-top: solid 1px var(--component-grid-cell-bottom-border-color, #eee);
+        padding: 8px 16px;
+
+        .item-details {
+            padding: 4px;
+            flex-basis: 65%;
+
+            &>div {
+                padding: 2px 0;
+            }
+        }
+
+        .item-progress {
+            align-items: flex-start;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0;
+
+            &>div {
+                padding: 2px 0;
+            }
+
+            .pr {
+                background: none;
+                color: rgba(0, 0, 0, .9);
+                color: var(--text-primary-color, rgba(0, 0, 0, .9));
+                font-weight: normal;
+                margin: 0;
+                margin-right: 4px;
+                padding: 0;
+                text-decoration: underline;
+
+                &.new {
+                    padding: 4px;
+                    margin-right: 8px;
+                    background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
+                    padding: 8px 16px;
+                    text-decoration: none;
+                    font-weight: 600;
+
+                    &:hover {
+                        background-color: rgba(0, 120, 212, 1);
+                        background-color: var(--communication-background, rgba(0, 120, 212, 1));
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
 }
 
 
-.build-title {
-    background-color: #44444490;
-    background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
+.ms-Icon--Pipeline:before {
+    content: "\f3b3 ";
+    color: rgba(0, 120, 212, 1);
 }
 
-.build-details {
-    display: block;
-    background-color: #44444490;
-    font-size: small;;
-    background-color: rgba(var(--palette-neutral-6, 239, 239, 239), 1);
-}
+
 
 .ms-Icons {
     font-family: "AzureDevOpsMDL2Assets";
@@ -39,6 +175,7 @@ h1 {
 .ms-Icon--Settings:before {
     content: "\e713 ";
 }
+
 .ms-Icon--Swap:before {
     content: "\e8ab ";
 }
@@ -50,9 +187,9 @@ h1 {
     cursor: pointer;
 }
 
-* {
-    font-family: "Segoe UI", "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Ubuntu, Arial,
-        sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    color: rgba(0, 0, 0, 0.9);
-    color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
-}
+// * {
+//     font-family: "Segoe UI", "-apple-system", BlinkMacSystemFont, Roboto, "Helvetica Neue", Helvetica, Ubuntu, Arial,
+//         sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+//     color: rgba(0, 0, 0, 0.9);
+//     color: var(--text-primary-color, rgba(0, 0, 0, 0.9));
+// }
