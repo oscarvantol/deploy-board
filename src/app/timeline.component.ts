@@ -50,6 +50,26 @@ export class TimelineComponent {
         return "stage-unknown";
     }
 
+    isPending(record: TimelineRecord) {
+        return record.state === TimelineRecordState.Pending;
+    }
+
+    isInProgress(record: TimelineRecord) {
+        return record.state === TimelineRecordState.InProgress;
+    }
+
+    hasSucceeded(record: TimelineRecord) {
+        return (record.state == TimelineRecordState.Completed && record.result === TaskResult.Succeeded);
+    }
+
+    hasFailed(record: TimelineRecord) {
+        return (record.state == TimelineRecordState.Completed && record.result === TaskResult.Failed);
+    }
+
+    hasSkipped(record: TimelineRecord) {
+        return (record.state == TimelineRecordState.Completed && record.result === TaskResult.Skipped);
+    }
+
     getTooltip(record: TimelineRecord) {
         return record.name + " (" + this.getClass(record) + ")";
     }

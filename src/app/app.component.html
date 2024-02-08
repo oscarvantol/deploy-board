@@ -1,5 +1,6 @@
 <h1>Deploy Board</h1>
 
+
 <div *ngFor="let build of getBuildInProgress() | async" class="build">
 
   <div class="header">
@@ -12,14 +13,16 @@
   <div class="container">
 
     <div class="item-details">
-      <div><a href="{{build.repository.url}}/commit/{{build.triggerInfo['ci.sourceSha']}}" target="_blank">{{build.triggerInfo['ci.message']}}</a></div>
+      <div><a href="{{build.repository.url}}/commit/{{build.triggerInfo['ci.sourceSha']}}"
+          target="_blank">{{build.triggerInfo['ci.message']}}</a></div>
       <div>
         <span>Created by {{build.requestedFor.displayName}} for {{build.triggerInfo['ci.sourceBranch']}}</span>
       </div>
     </div>
 
     <div class="item-progress">
-      <build-timeline [buildId]="build.id" [href]="build._links.web.href" [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
+      <build-timeline [buildId]="build.id" [href]="build._links.web.href"
+        [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
     </div>
   </div>
 </div>
