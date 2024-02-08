@@ -1,8 +1,8 @@
 import { EnvironmentInstance } from "azure-devops-extension-api/TaskAgent";
 
 export namespace DeployStateActions {
-    export class Initialize {
-        static readonly type = `[DeployStateActions] Initialize`;
+    export class LoadPipelines {
+        static readonly type = `[DeployStateActions] LoadPipelines`;
     }
 
     export class LoadTimeline {

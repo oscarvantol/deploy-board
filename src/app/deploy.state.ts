@@ -25,9 +25,15 @@ export class DeployState {
 
     }
 
-    static getBuildInProgress() {
+    static getPipelines() {
         return createSelector([DeployState], (state: DeployStateModel) => {
-            return state.buildsInProgress;
+            return state.buildsInProgress.map(e => e.definition).filter((e, i, a) => a.findIndex(f => f.id == e.id) == i).sort((a, b) => a.name < b.name ? -1 : 1);
+        });
+    }
+
+    static getBuildInProgress(pipelineId: number) {
+        return createSelector([DeployState], (state: DeployStateModel) => {
+            return state.buildsInProgress.filter(e => e.definition.id == pipelineId).sort((a, b) => b.id - a.id);
         });
     }
 
@@ -43,20 +49,14 @@ export class DeployState {
         });
     }
 
-    @Action(DeployStateActions.Initialize)
-    async initialize(ctx: StateContext<DeployStateModel>, _: DeployStateActions.Initialize) {
+    @Action(DeployStateActions.LoadPipelines)
+    async initialize(ctx: StateContext<DeployStateModel>, _: DeployStateActions.LoadPipelines) {
         await this.vssService.initialize();
 
         const buildsInProgress = await this.vssService.getBuildsInProgress();
         ctx.patchState({
-            buildsInProgress: buildsInProgress.sort((a, b) => {
-                const definitionOrder = a.definition.id - b.definition.id;
-                if (definitionOrder != 0)
-                    return definitionOrder;
-                return a.id - b.id;
-            }
+            buildsInProgress: buildsInProgress
 
-            )
         });
 
         await Promise.all(buildsInProgress.map(e => {

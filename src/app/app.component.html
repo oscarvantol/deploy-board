@@ -1,28 +1,37 @@
 <h1>Deploy Board</h1>
 
 
-<div *ngFor="let build of getBuildInProgress() | async" class="build">
+
+<div *ngFor="let pipeline of getPipelines() | async" class="build">
 
   <div class="header">
-    <span class="ms-Icons"><span aria-hidden="true" class="ms-Icon--Pipeline"></span></span>
-    <span>{{build.definition.name}}</span>
-    <span>&nbsp;</span>
-    <a class="title" [href]="build._links.web.href" target="_top">{{build.buildNumber}}</a>
+    <span class="ms-Icons"><span aria-hidden="true" class="ms-Icon--Pipeline"></span>&nbsp;</span>
+    <span>{{pipeline.name}}</span>
   </div>
 
-  <div class="container">
-
+  <div class="container" *ngFor="let build of getBuildInProgress(pipeline.id) | async">
     <div class="item-details">
-      <div><a href="{{build.repository.url}}/commit/{{build.triggerInfo['ci.sourceSha']}}"
-          target="_blank">{{build.triggerInfo['ci.message']}}</a></div>
       <div>
-        <span>Created by {{build.requestedFor.displayName}} for {{build.triggerInfo['ci.sourceBranch']}}</span>
+        <span class="build-number"><a class="title" [href]="build._links.web.href"
+            target="_top">{{build.buildNumber}}</a> </span>
+      </div>
+      <div>
+        <span class="ci-message"><a href="{{build.repository.url}}/commit/{{build.triggerInfo['ci.sourceSha']}}"
+            target="_blank">{{build.triggerInfo['ci.message']}}</a>
+        </span>
+      </div>
+      <div>
+        <span class="vss-Persona extra-small" role="img" aria-hidden="true"><img src="{{build.requestedFor.imageUrl}}"
+            title="{{build.requestedFor.displayName}}"></span>
+        <span title="{{build.startTime}}">{{build.triggerInfo['ci.sourceBranch']}}</span>
       </div>
     </div>
 
-    <div class="item-progress">
+    <div class="item-progress ">
       <build-timeline [buildId]="build.id" [href]="build._links.web.href"
         [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
     </div>
   </div>
+
+
 </div>
