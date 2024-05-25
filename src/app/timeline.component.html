@@ -1,8 +1,17 @@
 <div class="stages">
     <span *ngFor="let stage of timelineRecords">
         <a [href]="href" target="_blank">
-            <!--<span [class]="getClass(stage)" class="stage" title="{{getTooltip(stage)}}"></span>-->
 
+            <span class="flex-row" *ngIf="isUndetermined(stage)">
+                <svg aria-labelledby="__bolt-status-998-desc" class="bolt-status flex-noshrink neutral" height="16"
+                    role="img" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
+                    <desc id="__bolt-status-998-desc">PROD Environment Waiting</desc>
+                    <circle cx="8" cy="8" r="7" fill="#fff"></circle>
+                    <path fill-rule="evenodd" clip-rule="evenodd"
+                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm0-1.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13z">
+                    </path>
+                </svg>
+            </span>
 
             <span class="flex-row" *ngIf="hasSucceeded(stage)">
                 <svg class="bolt-status flex-noshrink success icon-large-margin" height="16" role="presentation"
@@ -35,9 +44,8 @@
             </span>
 
             <span class="flex-row flex-center stage-status" *ngIf="hasSkipped(stage)">
-                <svg aria-labelledby="__bolt-status-393-desc"
-                    class="bolt-status flex-noshrink neutral" height="16" role="img" viewBox="0 0 16 16" width="16"
-                    xmlns="http://www.w3.org/2000/svg">
+                <svg aria-labelledby="__bolt-status-393-desc" class="bolt-status flex-noshrink neutral" height="16"
+                    role="img" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg">
                     <desc id="__bolt-status-393-desc">DEV Environment Skipped</desc>
                     <circle cx="8" cy="8" r="7" fill="#fff"></circle>
                     <path fill-rule="evenodd" clip-rule="evenodd"

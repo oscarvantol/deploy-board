@@ -1,8 +1,10 @@
-import { EnvironmentInstance } from "azure-devops-extension-api/TaskAgent";
+import { BuildStatus } from "azure-devops-extension-api/Build";
 
 export namespace DeployStateActions {
     export class LoadPipelines {
         static readonly type = `[DeployStateActions] LoadPipelines`;
+        constructor(public buildStatus: BuildStatus) {
+        }
     }
 
     export class LoadTimeline {
@@ -11,9 +13,4 @@ export namespace DeployStateActions {
         }
     }
 
-    export class SwapEnvironmentOrder {
-        static readonly type = `[DeployStateActions] SwapEnvironmentOrder`;
-        constructor(public environment1: EnvironmentInstance, public environment2: EnvironmentInstance) {
-        }
-    }
 }

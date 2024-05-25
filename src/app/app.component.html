@@ -1,6 +1,12 @@
 <h1>Deploy Board</h1>
 
-
+<div class="header">
+  <div class="status-filter">
+    <select [(ngModel)]="statusFilter" (change)="refresh()">
+      <option value="all">All</option>
+      <option value="inProgress">In Progress</option>
+    </select>
+  </div>
 
 <div *ngFor="let pipeline of getPipelines() | async" class="build">
 
@@ -9,7 +15,7 @@
     <span>{{pipeline.name}}</span>
   </div>
 
-  <div class="container" *ngFor="let build of getBuildInProgress(pipeline.id) | async">
+  <div class="container" [class.inProgress]="build.status == 1" *ngFor="let build of getBuildInProgress(pipeline.id) | async">
     <div class="item-details">
       <div>
         <span class="build-number"><a class="title" [href]="build._links.web.href"
@@ -32,6 +38,5 @@
         [timelineRecords]="getStageRecords(build.id) | async"></build-timeline>
     </div>
   </div>
-
 
 </div>

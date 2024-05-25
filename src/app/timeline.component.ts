@@ -21,6 +21,12 @@ export class TimelineComponent {
 
     }
 
+    anyInProgress() {
+        if (this.timelineRecords == null)
+            return false;
+        return this.timelineRecords.some(e => e.state == TimelineRecordState.InProgress);
+    }
+
     getClass(record: TimelineRecord) {
 
         switch (record.state) {
@@ -51,7 +57,13 @@ export class TimelineComponent {
     }
 
     isPending(record: TimelineRecord) {
+        if (this.anyInProgress())
+            return false;
         return record.state === TimelineRecordState.Pending;
+    }
+
+    isUndetermined(record: TimelineRecord) {
+        return this.anyInProgress() && record.state === TimelineRecordState.Pending;
     }
 
     isInProgress(record: TimelineRecord) {
@@ -70,7 +82,4 @@ export class TimelineComponent {
         return (record.state == TimelineRecordState.Completed && record.result === TaskResult.Skipped);
     }
 
-    getTooltip(record: TimelineRecord) {
-        return record.name + " (" + this.getClass(record) + ")";
-    }
 }

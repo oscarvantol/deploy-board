@@ -2,7 +2,7 @@
     "manifestVersion": 1,
     "id": "deploy-board",
     "publisher": "ovantol",
-    "version": "0.0.42",
+    "version": "0.0.50",
     "name": "deploy-board",
     "description": "Deploy overview Azure DevOps",
     "demands": ["api-version/5.0"],
@@ -31,7 +31,7 @@
         }
     ],
     "icons": {
-        "default": "images/Nav-Launch.3tiJhd.png"
+        "default": "images/launch.png"
     },
     "contributions": [
         {
@@ -43,7 +43,7 @@
             ],
             "properties": {
                 "name": "Deploy Board",
-                "icon": "images/Nav-Launch.3tiJhd.png",
+                "icon": "images/launch.png",
                 "uri": "app/index.html",
                 "order": 100
             }
@@ -56,7 +56,7 @@
             "packagePath": "app"
         },
         {
-            "path": "images/Nav-Launch.3tiJhd.png",
+            "path": "images/launch.png",
             "addressable": true
         }       
     ]

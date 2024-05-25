@@ -50,19 +50,17 @@ export class DeployState {
     }
 
     @Action(DeployStateActions.LoadPipelines)
-    async initialize(ctx: StateContext<DeployStateModel>, _: DeployStateActions.LoadPipelines) {
+    async initialize(ctx: StateContext<DeployStateModel>, params: DeployStateActions.LoadPipelines) {
         await this.vssService.initialize();
 
-        const buildsInProgress = await this.vssService.getBuildsInProgress();
+        const buildsInProgress = await this.vssService.getBuilds(params.buildStatus);
         ctx.patchState({
             buildsInProgress: buildsInProgress
-
         });
 
         await Promise.all(buildsInProgress.map(e => {
             this.loadTimeline(ctx, new DeployStateActions.LoadTimeline(e.id));
         }));
-
     }
 
     @Action(DeployStateActions.LoadTimeline)
